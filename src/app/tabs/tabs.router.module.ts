@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
-import { Tab1Page } from '../tab1/tab1.page';
+import { ProductTabPage } from '../productTab/productTab.page';
 import { Tab2Page } from '../tab2/tab2.page';
 import { Tab3Page } from '../tab3/tab3.page';
 
@@ -19,7 +19,7 @@ const routes: Routes = [
       {
         path: 'tab1',
         outlet: 'tab1',
-        component: Tab1Page
+        component: ProductTabPage
       },
       {
         path: 'tab2',

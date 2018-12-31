@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      PDMLink
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="authentication">
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Server</ion-label>
+            <ion-input [(ngModel)]="usercreds.server" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Select Server</ion-label>
+            <ion-select [(ngModel)]="usercreds.server" (change)="setCachedUser()">
+                <ion-select-option *ngFor="let profile of cachedProfiles" value="{{profile.server}}">{{profile.server}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input [(ngModel)]="usercreds.name" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input [(ngModel)]="usercreds.password" type="password"></ion-input>
+        </ion-item>
+    </ion-list>
+	<ion-button size="full" (click)="signIn(usercreds)">Login</ion-button>
+
+</ion-content>
