@@ -70,22 +70,34 @@ export class AuthService {
   }
 
   getRequestHeader(includeNonce) {
-  console.log(this.creds);
   	let httpOptions = {
 	  headers: new HttpHeaders({
 		'Authorization': this.creds
 	    })
     };
 
-	if (includeNonce) {
-	  const nonceKey = this.nonceKey;
-	  httpOptions = {
+	  if (includeNonce) {
+	    const nonceKey = this.nonceKey;
+	    httpOptions = {
+	        headers: new HttpHeaders({
+		      'Authorization': this.creds,
+		      nonceKey: this.nonce
+		    })
+	    };
+	  }
+    return httpOptions;
+  }
+
+  getBlobRequestHeader() {
+  	let httpOptions = {
 	    headers: new HttpHeaders({
-		  'Authorization': this.creds,
-		  nonceKey: this.nonce
-		})
-	  };
-	}
+		  'Authorization': this.creds
+	    }),
+      //observe: 'response' as 'body',
+      responseType: 'arraybuffer' as 'json'
+      
+    };
+
     return httpOptions;
   }
 

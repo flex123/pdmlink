@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductTabPage } from './productTab.page';
+import { HttpSrcImg } from './httpSrcImg';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { ProductTabPage } from './productTab.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: ProductTabPage }])
   ],
-  declarations: [ProductTabPage]
+  declarations: [ProductTabPage, HttpSrcImg]
 })
 export class ProductTabPageModule {}

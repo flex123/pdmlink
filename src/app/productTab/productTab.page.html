@@ -5,7 +5,7 @@
     </ion-title>
   </ion-toolbar>
   <ion-item>
-    <ion-label>Product</ion-label>
+    <ion-label>Product</ion-label><ion-badge [hidden]="parts.length === 0" color="primary">{{parts.length}} Parts</ion-badge>
     <ion-select ok-text="Okay" cancel-text="Dismiss" (ionChange)="setProduct($event)">
       <ion-select-option *ngFor="let product of products" value="{{product.ID}}">{{product.Name}}</ion-select-option>
     </ion-select>
@@ -15,14 +15,16 @@
 <ion-content>
 
 <ion-list>
-  <ion-item *ngFor="let part of parts">
+  <ion-item *ngFor="let part of formattedParts">
   
     <ion-avatar slot="start">
-      <img src="http://192.168.0.19/Windchill/servlet/WindchillAuthGW/wt.content.ContentHttp/viewContent/sqb068_prt.jpg?u8&HttpOperationItem=wt.content.ApplicationData%3A149836&ofn=sqb068_prt.jpg&ContentHolder=wt.viewmarkup.DerivedImage%3A149811&forceDownload=true"/>
+      <http-img-src [src]="part.thumbnail"></http-img-src>
     </ion-avatar>
     
     <ion-label>
       <h2>{{part.Name}}</h2>
+      <h3>{{part.Number}}   {{part.Version}}</h3>
+      <p>{{part.State.Display}}</p>
     </ion-label>
   </ion-item>
 </ion-list>
